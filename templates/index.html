@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Breast Cancer Detection</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Noto+Sans&display=swap" rel="stylesheet">
+</head>
+<style>
+    body{
+        background-color: rgb(194, 228, 241);
+        font-family: 'Noto Sans', sans-serif;
+    }
+    h3{
+        text-align: center;
+    }
+    #div1{
+        display: flex;
+        flex-direction: column;
+        height: 500px;
+        width: 450px;
+        background-color: white;
+        position: relative;
+        left: 15em;
+        top: 5em;
+        align-items: center;
+        z-index: 1;
+    }
+    #div2{
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        height: 500px;
+        width: 450px;
+        background-color: rgb(150, 200, 233);
+        position: relative;
+        left: 43.2em;
+        bottom: 26.3em;
+    }
+    img{
+        margin-top: 30px;
+        height: 350px;
+        width: 350px;
+    }
+    p{
+        font-weight: 600;
+    }
+    .features{
+        margin-bottom: 10px;
+        height: 30px;
+        border-radius: .3em;
+        border: none;
+    }
+    #frm{
+        margin-top: 40px;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+    }
+    #btn{
+        margin-top: 30px;
+        width: 160px;
+        border: none;
+        border-radius: .3em;
+        height: 30px;
+    }
+    #res{
+        position: relative;
+        bottom: 450px;
+        left: 550px;
+    }
+</style>
+<body>
+    <h3>Breast Cancer Detection</h3>
+    <div id='div1'>
+        <p>Cancer is a word, not a sentence</p>
+        <img src="{{url_for('static', filename='image.jpg')}}" alt="">
+    </div>
+    <div id='div2'>
+        <p>Enter Cell Details</p>
+    <form action="{{ url_for('predict')}}" method="post" id='frm'>
+        <input type="text" placeholder="Enter texture" name='a' id='a' class='features' autocomplete="off">
+        <input type="text" placeholder="Enter perimeter" name='b' id='b' class='features' autocomplete="off">
+        <input type="text" placeholder="Enter smoothness" name='c' id='c' class='features' autocomplete="off">
+        <input type="text" placeholder="Enter compactness" name='d' id='d' class='features' autocomplete="off">
+        <input type="text" placeholder="Enter symmetry" name='e' id='e' class='features' autocomplete="off">
+        <button type="submit" id='btn'>Submit</button>
+        
+    </form>
+    </div>
+    <br>
+    <h1 id='res'>{{output_text}}</h1>
+</body>
+</html>
